@@ -1,9 +1,9 @@
 package br.gov.pe.saudecaruaru.inspetordigital.dao.test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.gov.pe.saudecaruaru.inspetordigital.dao.EstadoDAO;
+import br.gov.pe.saudecaruaru.inspetordigital.mock.EstadoMock;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Estado;
 import android.test.AndroidTestCase;
 
@@ -81,7 +81,7 @@ public class EstadoDAOTest extends AndroidTestCase {
 	public void testCrudWithList() {
 		boolean ok = true;
 		try {
-			List<Estado> l = EstadoDAOTest.getEstados();
+			List<Estado> l = EstadoMock.getModelos();
 			assertEquals(true, this.estadoDao.deleteAll());
 
 			assertEquals(true, this.estadoDao.save(l, true));
@@ -104,16 +104,5 @@ public class EstadoDAOTest extends AndroidTestCase {
 			assertTrue(ok);
 		}
 
-	}
-
-	public static List<Estado> getEstados() {
-		List<Estado> list = new ArrayList<Estado>();
-
-		list.add(new Estado("ALAGOAS", "AL", "12"));
-		list.add(new Estado("pernambuco", "PE", "26"));
-		list.add(new Estado("SÃO PAULO", "SP", "23"));
-		list.add(new Estado("bahia", "BA", "29"));
-
-		return list;
 	}
 }

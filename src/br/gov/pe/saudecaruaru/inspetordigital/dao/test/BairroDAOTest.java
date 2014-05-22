@@ -1,9 +1,9 @@
 package br.gov.pe.saudecaruaru.inspetordigital.dao.test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.gov.pe.saudecaruaru.inspetordigital.dao.BairroDAO;
+import br.gov.pe.saudecaruaru.inspetordigital.mock.BairroMock;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Bairro;
 import android.test.AndroidTestCase;
 
@@ -44,7 +44,7 @@ public class BairroDAOTest extends AndroidTestCase {
 	public void testCrud() {
 		boolean ok = true;
 		try {
-			Bairro bairro = BairroDAOTest.getBairros().get(0);
+			Bairro bairro = BairroMock.getModelos().get(0);
 
 			assertEquals(true, this.bairroDAO.deleteAll());
 			assertEquals(true, this.bairroDAO.save(bairro, true));
@@ -81,7 +81,7 @@ public class BairroDAOTest extends AndroidTestCase {
 	public void testCridWithList() {
 		boolean ok = true;
 		try {
-			List<Bairro> bairros = BairroDAOTest.getBairros();
+			List<Bairro> bairros = BairroMock.getModelos();
 			assertEquals(true, this.bairroDAO.deleteAll());
 			assertEquals(true, this.bairroDAO.save(bairros, true));
 			assertEquals(bairros.size(), this.bairroDAO.findAll().size());
@@ -106,16 +106,5 @@ public class BairroDAOTest extends AndroidTestCase {
 			assertTrue(ok);
 		}
 
-	}
-
-	public static List<Bairro> getBairros() {
-		List<Bairro> bairros = new ArrayList<Bairro>();
-
-		bairros.add(new Bairro("01", "são francisco"));
-		bairros.add(new Bairro("02", "maurício de nassau"));
-		bairros.add(new Bairro("03", "salgado"));
-		bairros.add(new Bairro("04", "centro"));
-
-		return bairros;
 	}
 }

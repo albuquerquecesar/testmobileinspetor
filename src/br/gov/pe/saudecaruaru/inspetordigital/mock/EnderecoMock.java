@@ -3,8 +3,6 @@ package br.gov.pe.saudecaruaru.inspetordigital.mock;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.gov.pe.saudecaruaru.inspetordigital.dao.test.BairroDAOTest;
-import br.gov.pe.saudecaruaru.inspetordigital.dao.test.CidadeDAOTest;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Bairro;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Cidade;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Endereco;
@@ -14,8 +12,8 @@ public class EnderecoMock {
 	public static List<Endereco> getModelos(){
 		
 		List<Endereco> enderecos=new ArrayList<Endereco>();
-		List<Bairro> bairros=BairroDAOTest.getBairros();
-		List<Cidade> cidades=CidadeDAOTest.getCidades();
+		List<Bairro> bairros=BairroMock.getModelos();
+		List<Cidade> cidades=CidadeMock.getModelos();
 		
 		enderecos.add(new Endereco(1,
 						"55938838", "rua da matriz", bairros.get(1), cidades

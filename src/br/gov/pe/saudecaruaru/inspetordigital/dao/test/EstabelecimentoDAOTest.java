@@ -14,6 +14,9 @@ import br.gov.pe.saudecaruaru.inspetordigital.dao.NaturezaJuridicaDAO;
 import br.gov.pe.saudecaruaru.inspetordigital.dao.OrgaoReguladorDAO;
 import br.gov.pe.saudecaruaru.inspetordigital.dao.ProprietarioDAO;
 import br.gov.pe.saudecaruaru.inspetordigital.dao.ResponsavelDAO;
+import br.gov.pe.saudecaruaru.inspetordigital.mock.BairroMock;
+import br.gov.pe.saudecaruaru.inspetordigital.mock.CidadeMock;
+import br.gov.pe.saudecaruaru.inspetordigital.mock.EstadoMock;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Bairro;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Cidade;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Endereco;
@@ -63,9 +66,9 @@ public class EstabelecimentoDAOTest extends AndroidTestCase {
 		this.naturezaDAO.save(NaturezaDAOTest.getnaturezas(), true);
 		this.naturezaJuridicaDAO.save(
 				NaturezaJuridicaDAOTest.getNaturezaJuridicas(), true);
-		this.estadoDAO.save(EstadoDAOTest.getEstados(), true);
-		this.bairroDAO.save(BairroDAOTest.getBairros(), true);
-		this.cidadeDAO.save(CidadeDAOTest.getCidades(), true);
+		this.estadoDAO.save(EstadoMock.getModelos(), true);
+		this.bairroDAO.save(BairroMock.getModelos(), true);
+		this.cidadeDAO.save(CidadeMock.getModelos(), true);
 		this.orgaoReguladorDAO.save(
 				OrgaoReguladorDAOTest.getOrgaoReguladores(), true);
 		this.proprietarioDAO.save(ProprietarioDAOTest.getProprietarios(), true);
@@ -114,9 +117,9 @@ public class EstabelecimentoDAOTest extends AndroidTestCase {
 
 			estabelecimento.setInscricaoEstadual("9999999");
 			estabelecimento.getEndereco().setBairro(
-					BairroDAOTest.getBairros().get(2));
+					BairroMock.getModelos().get(2));
 			estabelecimento.getEndereco().setCidade(
-					CidadeDAOTest.getCidades().get(2));
+					CidadeMock.getModelos().get(2));
 			estabelecimento.getEndereco().setComplemento(
 					"testando o complemento");
 			estabelecimento.setResponsavel(ResponsavelDAOTest.getResponsaveis()
@@ -183,8 +186,8 @@ public class EstabelecimentoDAOTest extends AndroidTestCase {
 
 	public static List<Estabelecimento> getEstabelecimentos() {
 
-		List<Cidade> cidades = CidadeDAOTest.getCidades();
-		List<Bairro> bairros = BairroDAOTest.getBairros();
+		List<Cidade> cidades = CidadeMock.getModelos();
+		List<Bairro> bairros = BairroMock.getModelos();
 		List<Responsavel> responsaveis = ResponsavelDAOTest.getResponsaveis();
 		List<Proprietario> proprietarios = ProprietarioDAOTest
 				.getProprietarios();

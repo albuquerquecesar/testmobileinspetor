@@ -9,6 +9,7 @@ import br.gov.pe.saudecaruaru.inspetordigital.dao.FormularioDAO;
 import br.gov.pe.saudecaruaru.inspetordigital.dao.InspecaoDAO;
 import br.gov.pe.saudecaruaru.inspetordigital.dao.OrgaoReguladorDAO;
 import br.gov.pe.saudecaruaru.inspetordigital.dao.ServidorDAO;
+import br.gov.pe.saudecaruaru.inspetordigital.mock.ServidorMock;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Estabelecimento;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Formulario;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Inspecao;
@@ -46,7 +47,7 @@ public class InspecaoDAOTest extends AndroidTestCase {
 				.getEstabelecimentos());
 		this.orgaoReguladorDAO.merge(OrgaoReguladorDAOTest
 				.getOrgaoReguladores());
-		this.servidorDAO.merge(ServidorDAOTest.getServidores());
+		this.servidorDAO.merge(ServidorMock.getModelos());
 	}
 
 	/*
@@ -72,8 +73,8 @@ public class InspecaoDAOTest extends AndroidTestCase {
 			Inspecao inspecao = InspecaoDAOTest.getInspecoes().get(0);
 			inspecao.getFiscais().clear();
 
-			Servidor serivor1 = ServidorDAOTest.getServidores().get(0);
-			Servidor serivor2 = ServidorDAOTest.getServidores().get(1);
+			Servidor serivor1 = ServidorMock.getModelos().get(0);
+			Servidor serivor2 = ServidorMock.getModelos().get(1);
 
 			inspecao.getFiscais().add(serivor1);
 
@@ -199,7 +200,7 @@ public class InspecaoDAOTest extends AndroidTestCase {
 	public void testAssignmentAllFiscais() {
 		boolean ok = true;
 		try {
-			List<Servidor> servidores = ServidorDAOTest.getServidores();
+			List<Servidor> servidores = ServidorMock.getModelos();
 			Inspecao inspecao = InspecaoDAOTest.getInspecoes().get(0);
 
 			assertEquals(true, this.inspecaoDAO.save(inspecao, true));

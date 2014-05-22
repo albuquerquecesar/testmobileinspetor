@@ -25,7 +25,6 @@ public class BaseDAOTest<T extends IModel<T>> extends AndroidTestCase{
 	protected void setUp() throws Exception {
 		// TODO Auto-generated method stub
 		super.setUp();
-		this.dao.deleteAll();
 	}
 
 
@@ -36,6 +35,7 @@ public class BaseDAOTest<T extends IModel<T>> extends AndroidTestCase{
 	@Override
 	protected void tearDown() throws Exception {
 		// TODO Auto-generated method stub
+		this.dao.deleteAll();
 		super.tearDown();
 	}
 

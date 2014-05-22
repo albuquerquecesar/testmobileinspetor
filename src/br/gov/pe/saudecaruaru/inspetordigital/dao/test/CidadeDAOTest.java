@@ -1,11 +1,11 @@
 package br.gov.pe.saudecaruaru.inspetordigital.dao.test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.gov.pe.saudecaruaru.inspetordigital.dao.CidadeDAO;
 import br.gov.pe.saudecaruaru.inspetordigital.dao.EstadoDAO;
-import br.gov.pe.saudecaruaru.inspetordigital.model.Estado;
+import br.gov.pe.saudecaruaru.inspetordigital.mock.CidadeMock;
+import br.gov.pe.saudecaruaru.inspetordigital.mock.EstadoMock;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Cidade;
 import android.test.AndroidTestCase;
 
@@ -32,7 +32,7 @@ public class CidadeDAOTest extends AndroidTestCase {
 		// TODO Auto-generated method stub
 		super.setUp();
 
-		this.estadoDAO.merge(EstadoDAOTest.getEstados());
+		this.estadoDAO.merge(EstadoMock.getModelos());
 	}
 
 	/*
@@ -50,7 +50,7 @@ public class CidadeDAOTest extends AndroidTestCase {
 	public void testCrud() {
 		boolean ok = true;
 		try {
-			Cidade cidade = CidadeDAOTest.getCidades().get(0);
+			Cidade cidade = CidadeMock.getModelos().get(0);
 
 			assertEquals(true, this.cidadeDAO.deleteAll());
 			assertEquals(true, this.cidadeDAO.save(cidade, true));
@@ -98,7 +98,7 @@ public class CidadeDAOTest extends AndroidTestCase {
 	public void testCridWithList() {
 		boolean ok = true;
 		try {
-			List<Cidade> cidades = CidadeDAOTest.getCidades();
+			List<Cidade> cidades = CidadeMock.getModelos();
 			assertEquals(true, this.cidadeDAO.deleteAll());
 			assertEquals(true, this.cidadeDAO.save(cidades, true));
 			assertEquals(cidades.size(), this.cidadeDAO.findAll().size());
@@ -123,17 +123,5 @@ public class CidadeDAOTest extends AndroidTestCase {
 			assertTrue(ok);
 		}
 
-	}
-
-	public static List<Cidade> getCidades() {
-		List<Cidade> cidades = new ArrayList<Cidade>();
-		List<Estado> estados = EstadoDAOTest.getEstados();
-
-		cidades.add(new Cidade("102023", "cachoeirinha", estados.get(0)));
-		cidades.add(new Cidade("103423", "são paulo", estados.get(1)));
-		cidades.add(new Cidade("107623", "pequenopólis", estados.get(2)));
-		cidades.add(new Cidade("102045", "vitória", estados.get(3)));
-
-		return cidades;
 	}
 }

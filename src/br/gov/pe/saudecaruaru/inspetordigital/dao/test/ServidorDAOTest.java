@@ -1,10 +1,10 @@
 package br.gov.pe.saudecaruaru.inspetordigital.dao.test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.gov.pe.saudecaruaru.inspetordigital.dao.OrgaoReguladorDAO;
 import br.gov.pe.saudecaruaru.inspetordigital.dao.ServidorDAO;
+import br.gov.pe.saudecaruaru.inspetordigital.mock.ServidorMock;
 import br.gov.pe.saudecaruaru.inspetordigital.model.OrgaoRegulador;
 import br.gov.pe.saudecaruaru.inspetordigital.model.Servidor;
 import android.test.AndroidTestCase;
@@ -52,7 +52,7 @@ public class ServidorDAOTest extends AndroidTestCase {
 	public void testCrud() {
 		boolean ok = true;
 		try {
-			Servidor servidor = ServidorDAOTest.getServidores().get(0);
+			Servidor servidor = ServidorMock.getModelos().get(0);
 
 			assertEquals(true, this.servidorDAO.deleteAll());
 			assertEquals(true, this.servidorDAO.save(servidor, true));
@@ -99,7 +99,7 @@ public class ServidorDAOTest extends AndroidTestCase {
 		boolean ok = true;
 		try {
 
-			List<Servidor> servidores = ServidorDAOTest.getServidores();
+			List<Servidor> servidores = ServidorMock.getModelos();
 
 			assertEquals(true, this.servidorDAO.deleteAll());
 			assertEquals(true, this.servidorDAO.save(servidores, true));
@@ -129,22 +129,6 @@ public class ServidorDAOTest extends AndroidTestCase {
 		} finally {
 			assertTrue(ok);
 		}
-	}
-
-	public static List<Servidor> getServidores() {
-
-		List<OrgaoRegulador> orgoes = OrgaoReguladorDAOTest
-				.getOrgaoReguladores();
-		List<Servidor> servidores = new ArrayList<Servidor>();
-
-		servidores.add(new Servidor("0348581239", "cesar henrique", "3243243",
-				orgoes.get(0), "3434"));
-		servidores.add(new Servidor("033490343", "pires junior", "34954",
-				orgoes.get(1), "55242"));
-		servidores.add(new Servidor("0348512239", "cesar henrique", "3243243"));
-		servidores.add(new Servidor("0348534909", "cesar henrique", "3243243"));
-
-		return servidores;
 	}
 
 }
